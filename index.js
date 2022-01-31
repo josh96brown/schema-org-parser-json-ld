@@ -138,7 +138,10 @@ function getMyBodyFromUri(url) {
     return new Promise(function (ok, fail) {
         request({
             url: url,
-            json: true
+            json: true,
+             headers: {
+                "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36 RuxitSynthetic/1.0 v3519916933988817436 t6816603945225267545 ath259cea6f altpriv cvcv=2 smf=0"
+            }
         }, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 ok(parse(body));
@@ -159,7 +162,7 @@ function getMyBodyFromUri(url) {
                     console.log(url);
                     return getMyBodyFromUri('http://' + url).then(ok).catch(tryHttps);
                 }
-                if (error.message.toString().indexOf('getaddrinfo ENOTFOUND') > -1)
+                if (error?.message.toString().indexOf('getaddrinfo ENOTFOUND') > -1)
                     return fail(new Error('URL not found!'));
                 fail(error);
             }
