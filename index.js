@@ -101,7 +101,7 @@ function extractJsonLd(json, dest) {
 function parse(body) {
     const replacements = ['<![CDATA[', ']]>'];
     replacements.forEach(function (str) {
-        body = replaceall.replaceall(str, '', body);
+        body = replaceall.replaceall(str, '', body || "");
     });
     var json = himalaya.parse(body.toString());
     var html = getElementOfJsonList(json, 'tagName', 'html');
