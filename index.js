@@ -172,5 +172,6 @@ function getMyBodyFromUri(url) {
 module.exports = {
     getJsonLdOfUrl: getMyBodyFromUri,
     getJsonFromFile: getSchemaFromFile,
-    simplifyJsonLd: simplifyJson
+    simplifyJsonLd: simplifyJson,
+    parseJsonLd: parse
 };
